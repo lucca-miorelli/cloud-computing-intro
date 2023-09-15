@@ -1,7 +1,7 @@
 # Cloud Computing KT - Poatek Interns 2023/2
 
 ## Introduction
-Welcome to the "cloud-computing intro" repository! This repository is aimed at introducing new interns at Poatek to cloud computing and Infrastructure as Code (IaC) concepts. In this README, we will provide an overview of the infrastructure provisioning process and explain why the `infra` folder is separated.
+Welcome to the "cloud-computing intro" repository! This repository is aimed at introducing new interns at Poatek to cloud computing and Infrastructure as Code (IaC) concepts. In this KT, we will provide an overview of the infrastructure provisioning process with and without using Terraform, as well as some fundamental cloud concepts.
 
 ## Infrastructure Provisioning
 
@@ -22,6 +22,6 @@ The `main.tf` file includes the configuration for creating an AWS EC2 instance. 
 The `main.tf` file also configures the provisioning of an S3 bucket to host a static website. The bucket named "my-static-website-bucket-cloud-kt" is created, and necessary access policies are applied. The `aws_s3_bucket_website_configuration` resource defines the index document as "index.html," which will be served as the main page of the static website. Additionally, the `aws_s3_bucket_policy` resource allows public read access to the objects in the bucket.
 
 ## Repository Purpose
-The purpose of this repository is to introduce new interns at Poatek to cloud computing and Infrastructure as Code (IaC) principles. By exploring the `infra` folder, interns can gain hands-on experience with provisioning infrastructure resources in the cloud using Terraform. The separation of the `infra` folder helps to keep the infrastructure-related code organized and easily manageable.
+The purpose of this repository is to introduce new interns at Poatek to cloud computing and Infrastructure as Code (IaC) principles. By exploring this repo, interns can gain hands-on experience with provisioning infrastructure resources in the cloud using Terraform. The separation of the `infra` folder helps to keep the infrastructure-related code organized and easily manageable.
 
 Please feel free to reach out to the mentors or ask questions if you need any further assistance in understanding or working with this repository. Enjoy your journey into the world of cloud computing and IaC!
