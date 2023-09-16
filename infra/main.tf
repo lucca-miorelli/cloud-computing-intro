@@ -83,51 +83,51 @@ resource "aws_security_group" "ec2_security_group" {
 #            S3 Bucket               #
 ######################################
 
-# # Create S3 Bucket
-# resource "aws_s3_bucket" "static_website_bucket" {
-#   bucket = "my-static-website-bucket-cloud-kt"  # Replace with your desired bucket name
+# Create S3 Bucket
+resource "aws_s3_bucket" "static_website_bucket" {
+  bucket = "my-static-website-bucket-cloud-kt"  # Replace with your desired bucket name
   
-#   tags = {
-#     Name        = "Static Website Bucket"  # Specifies the name tag for the bucket
-#     Environment = "Production"  # Specifies the environment tag for the bucket
-#     Terraform   = "true"  # Specifies a tag to indicate that the resource was created by Terraform
-#   }
-# }
+  tags = {
+    Name        = "Static Website Bucket"  # Specifies the name tag for the bucket
+    Environment = "Production"  # Specifies the environment tag for the bucket
+    Terraform   = "true"  # Specifies a tag to indicate that the resource was created by Terraform
+  }
+}
 
-# # Configure bucket to allow public access
-# resource "aws_s3_bucket_public_access_block" "static_website_public_access_block" {
-#   bucket = aws_s3_bucket.static_website_bucket.id  # Specifies the ID of the S3 bucket
+# Configure bucket to allow public access
+resource "aws_s3_bucket_public_access_block" "static_website_public_access_block" {
+  bucket = aws_s3_bucket.static_website_bucket.id  # Specifies the ID of the S3 bucket
 
-#   block_public_acls   = false  # Specifies if public ACLs are blocked
-#   block_public_policy = false  # Specifies if public bucket policies are blocked
-#   ignore_public_acls  = false  # Specifies if public ACLs should be ignored
-#   restrict_public_buckets = false  # Specifies if public buckets are restricted
-# }
+  block_public_acls   = false  # Specifies if public ACLs are blocked
+  block_public_policy = false  # Specifies if public bucket policies are blocked
+  ignore_public_acls  = false  # Specifies if public ACLs should be ignored
+  restrict_public_buckets = false  # Specifies if public buckets are restricted
+}
 
-# # Configure bucket policy to allow public access
-# resource "aws_s3_bucket_policy" "static_website_policy" {
-#   bucket = aws_s3_bucket.static_website_bucket.bucket  # Specifies the name of the S3 bucket
+# Configure bucket policy to allow public access
+resource "aws_s3_bucket_policy" "static_website_policy" {
+  bucket = aws_s3_bucket.static_website_bucket.bucket  # Specifies the name of the S3 bucket
 
-#   policy = <<EOF
-# {
-#     "Version": "2012-10-17",
-#     "Statement": [
-#       {
-#         "Effect": "Allow",
-#         "Principal": "*",
-#         "Action": "s3:GetObject",
-#         "Resource": "arn:aws:s3:::${aws_s3_bucket.static_website_bucket.bucket}/*"
-#       }
-#     ]
-# }
-# EOF
-# }
+  policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Principal": "*",
+        "Action": "s3:GetObject",
+        "Resource": "arn:aws:s3:::${aws_s3_bucket.static_website_bucket.bucket}/*"
+      }
+    ]
+}
+EOF
+}
 
-# # Configure bucket to host static website
-# resource "aws_s3_bucket_website_configuration" "static_website_configuration" {
-#   bucket = aws_s3_bucket.static_website_bucket.id  # Specifies the ID of the S3 bucket
+# Configure bucket to host static website
+resource "aws_s3_bucket_website_configuration" "static_website_configuration" {
+  bucket = aws_s3_bucket.static_website_bucket.id  # Specifies the ID of the S3 bucket
 
-#   index_document {
-#     suffix = "index.html"  # Specifies the suffix for the index document file
-#   }
-# }
+  index_document {
+    suffix = "index.html"  # Specifies the suffix for the index document file
+  }
+}
